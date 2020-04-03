@@ -1,44 +1,45 @@
-Program = start (assignation/append/remove/functions)* ends
+Program = start (assignation/declaration/append/comments/remove/functions)* ends
 
-start = w ">using" w String w ";" 
-assignation = w identifier w "=" w value w ";" w
-append = w identifier w "+=" w value w";" w
-remove = w identifier w "-=" w value w ";" w
-functions = w identifier w "(" w identifier w ","w (identifier/value) w ")" w ";" w
-ends = w "<out" w String w";" w
-
-
+start = w ">using" w path:String w ";" w {return {type:'using', path:path}}
+assignation = w target:identifier w "=" w value:value w ";" w {return {type:'assignation', target:target, value:value}}
+declaration = w "@" w target:identifier w ":" w keyword:keyword w "=" w value:value w ";" w{return {type:'declaration',datatype:keyword, target:target,value:value}}
+append = w identifier w "+=" w value w";" w {return}
+remove = w identifier w "-=" w value w ";" w {return}
+functions = w name:identifier w "(" w param1:identifier w ","w param2:(identifier/value) w ")" w ";" w {return {type:'function',name,param1,param2}}
+ends = w "<out" w path:String w";" w {return {type:'out', path:path}}
+comments = (w "~"  . ([^\n]*) w)/(w "~~" (!"~~" .)* "~~" w) {return text()}
   
-value = Term / Boolean / String / array
+value =  Boolean/Term / String / array
+keyword = "number"/"boo"/"string"/"list"
 //integer "integer" = ("-"/"") digits:[0-9]+ { return parseInt(text(), 10); }
 //--------------------------numbers-------------
-Term     = Factor ( Add / Sub )*
+Term     = Factor ( Add / Sub )* 
 Add      = w "+" w Factor w
 Sub      = w "-" w Factor w
-Factor   = Primary (Mul / Div)*
+Factor   = Primary (Mul / Div)* 
 Mul      = "*" w Primary w
 Div      = "/"  w Primary w
 Primary  = Parens / Neg / Number / Variable
-Parens   = w "(" w Term w")"w
-Neg      = "-" Primary
-Number = float / integer
+Parens   = w "(" w term:Term w")"w {return term}
+Neg      = "-" Primary  {return Number(text())}
+Number = float / integer {return Number(text())}
 integer "integer" = digits:[0-9]+ { return parseInt(text(), 10); }
 float "float" = (integer "." integer){ return parseFloat(text(), 10); } /("." integer) { return parseFloat(text(), 10); }
 
-Variable = identifier
+Variable = identifier 
 
 //---------------text----------------------------
 lowerCase  = [a-z]
 upperCase  = [A-Z]
 digit      = [0-9]
 underscore = '_'
-identifier = (lowerCase / upperCase / underscore) (lowerCase / upperCase / underscore / digit)*
+identifier = (lowerCase / upperCase / underscore) (lowerCase / upperCase / underscore / digit)* {return text()}
 w "whitespace" = [ \t\n\r]*
 //-------boo-------------------------
-Boolean = "true" / "false"
+Boolean = "true" / "false" 
 //--------------string-------------
 
-String = "\"" (!"\"" Char)* "\""
+String = "\"" content:(!"\"" Char)* "\"" {return text()}
 Char = "\\" ( "\"" 
                         / "'"
                         / "\\"
@@ -49,8 +50,7 @@ Char = "\\" ( "\""
                         / 'u' Hex Hex Hex Hex
                         / 'U' Hex Hex Hex Hex Hex Hex Hex Hex
                         )
-             / . 
+             / .
 Hex = [0-9a-fA-F]
-
 //-------------------------arrays------------------
-array = "[" w ((value w ",")/value)* w "]"
+array = "[" w ((value w ",")/value)* w "]" {return JSON.parse(text())} 
