@@ -1,0 +1,22 @@
+{
+  "name": "velvet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oremorsiul15/Velvet.git"
+  },
+  "author": "Luis Romero-Sevilla",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oremorsiul15/Velvet/issues"
+  },
+  "homepage": "https://github.com/oremorsiul15/Velvet#readme",
+  "dependencies": {
+    "pegjs": "^0.10.0"
+  }
+}
