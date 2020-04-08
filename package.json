@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/oremorsiul15/Velvet#readme",
   "dependencies": {
+    "jsdom": "^16.2.2",
     "pegjs": "^0.10.0"
   }
 }
