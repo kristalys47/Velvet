@@ -1,0 +1,14 @@
+[
+    {
+        "id":"fullName",
+        "type":"H1"
+    },
+    {
+        "id":"jobTitle",
+        "type":"H2"
+    },
+    {
+        "id":"headshotImage",
+        "type":"IMG"
+    }
+]
