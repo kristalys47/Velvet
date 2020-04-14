@@ -28,8 +28,8 @@ fs.readFile('./rules.pegjs', 'utf8', (err, data) => {
     const parsedData = parser.parse(
     `
         >using "./ResumeTemplate.html";
-        on(fullName, "Jaime");
-        on(jobTitle, "Estudiante UPRM");
+        on(fullName, "Jaime Rivera Rodriguez");
+        on(jobTitle, "Estudiante UPRM CIIC");
         on(headshotImage, "https://picsum.photos/200/300");
         <out "el/output/path";
     `);
