@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1a7370b6-06ae-46ae-b4e8-7d051f5d8d18" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/headshot.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/intermediateCode.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ResumeTemplate.html" beforeDir="false" afterPath="$PROJECT_DIR$/ResumeTemplate.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-    </list>
+    <list default="true" id="1a7370b6-06ae-46ae-b4e8-7d051f5d8d18" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -61,7 +55,7 @@
       <option name="presentableId" value="Default" />
       <updated>1586123597919</updated>
       <workItem from="1586123599561" duration="7109000" />
-      <workItem from="1586892400237" duration="2403000" />
+      <workItem from="1586892400237" duration="2729000" />
     </task>
     <servers />
   </component>
