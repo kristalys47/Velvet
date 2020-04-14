@@ -1,11 +1,12 @@
 const peg = require("pegjs");
 const fs = require("fs");
 const Bridge = require('./Bridge/build/Bridge').Bridge;
+const htmlRead = require('./htmlElementExtractor');
 
 //Read Data and convert it to a JSON object
-const rawData = fs.readFileSync('input.json');
-const data = JSON.parse(rawData);
-const ourBridge = new Bridge(data);
+// const rawData = fs.readFileSync('input.json');
+// const data = JSON.parse(rawData);
+// const ourBridge = new Bridge(data);
 
 
 fs.readFile('./rules.pegjs', 'utf8', (err, data) => {
@@ -33,6 +34,12 @@ fs.readFile('./rules.pegjs', 'utf8', (err, data) => {
         <out "el/output/path";
     `);
 
+    const templatePath = parsedData[0]['path'].replace(/\"/g, "");
+    const templateElements = htmlRead.readTemplateAndGenerateElementObject(templatePath);
+    console.log(templateElements);
+
+    // JSON.parse(rawData);
+    const ourBridge = new Bridge(templateElements);
     
     parsedData[1].forEach(element => {
         if(element.name === 'on') {
