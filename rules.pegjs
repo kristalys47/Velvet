@@ -5,7 +5,7 @@ assignation = w target:identifier w "=" w value:value w ";" w {return {type:'ass
 declaration = w "@" w target:identifier w ":" w keyword:keyword w "=" w value:value w ";" w{return {type:'declaration',datatype:keyword, target:target,value:value}}
 append = w identifier w "+=" w value w";" w {return}
 remove = w identifier w "-=" w value w ";" w {return}
-functions = w name:identifier w "(" w param1:identifier w ","w param2:(identifier/value) w ")" w ";" w {return {type:'function',name,param1,param2}}
+functions = w name:identifier w "(" w tagIdentifier:identifier w ","w param:(identifier/value) w ")" w ";" w {return {type:'function',name,tagIdentifier,param}}
 ends = w "<out" w path:String w";" w {return {type:'out', path:path}}
 comments = (w "~"  . ([^\n]*) w)/(w "~~" (!"~~" .)* "~~" w) {return text()}
   

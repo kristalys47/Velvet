@@ -1,58 +1,58 @@
 
-var peg = require("pegjs");
-var fs = require("fs")
-const test = require('./intermediateCode')
+const peg = require("pegjs");
+const fs = require("fs");
+const Bridge = require('./Bridge/build/Bridge').Bridge;
+const htmlRead = require('./htmlElementExtractor');
+
+//Read Data and convert it to a JSON object
+// const rawData = fs.readFileSync('input.json');
+// const data = JSON.parse(rawData);
+// const ourBridge = new Bridge(data);
 
 
 fs.readFile('./rules.pegjs', 'utf8', (err, data) => {
     if (err) throw err;
-    console.log("generating...")
-    var parser = peg.generate(data);
-    console.log("parsing...")
 
-    console.log("\ntest1\n");
-    //test 1 absolute path
-    let parsedCode = parser.parse(`
-    >using "/home/nunila/Documents/Clases Enero 2020/PL/Proyecto/CV-Template/firstTemplate.html";
-    on(title, x);
-    <out "dcnsdkjcnjdsk";`);
+    // console.log("generating...")
+    const parser = peg.generate(data);
+    // console.log("parsing...")
+    /**
+     * Suggestions
+     * 1. Cambiar param1 y param2 por tagIdentifier y param
+     * 2. Como pongo " dentro de " ", Ex; "se usa el " para strings"
+     * 3. Me esta tirando los strings con todo y " "
+     * 4. Como cambio el alt de las imagenes, aunque es irrelevante xq se convertira en un PDF pero para debuggin en caso que no encuentre la imagen aparece ahi
+     * 5. Como añado los styles.
+     */
     
-    console.log(parsedCode)
 
-    const templatePath = parsedCode[0]['path'].replace(/\"/g, "");
-    test.readTemplateAndGenerateElementObject(templatePath);
+    //test 1
+    const parsedData = parser.parse(
+    `
+        >using "./ResumeTemplate.html";
+        on(fullName, "Nunila Davila");
+        on(jobTitle, "Estudiante UPRM ICOM");
+        on(headshotImage, "https://picsum.photos/200/300");
+        <out "el/output/path";
+    `);
 
-    console.log("\ntest2\n");
-    //test 2 relative path
-    console.log(parser.parse(`
-    >using "firstTemplate.html";
-    on(title, x);
-    <out "dcnsdkjcnjdsk";`));
+    const templatePath = parsedData[0]['path'].replace(/\"/g, "");
+    const templateElements = htmlRead.readTemplateAndGenerateElementObject(templatePath);
+    console.log(templateElements);
 
-    // console.log(parser.parse(`
-    // >using "firstTemplate.html";
-    // on(title, x);
-    // <out "dcnsdkjcnjdsk";`));
-    //
-    // console.log("\ntest2\n");
-    // //test 2
-    // console.log(parser.parse(`
-    // >using "something";
-    //
-    // @ text:string = "Test !@#$%^";
-    // @w:number = true;
-    //
-    // w =-3+(1+4)*2;
-    //
-    // arr = [1,2,3,4];
-    //
-    // on(title,2+2);
-    // on(num, w);
-    //
-    // @ tool :boo = false;
-    // <out "C:\\mypc\que.pdf";
-    // `));
-
+    // JSON.parse(rawData);
+    const ourBridge = new Bridge(templateElements);
+    
+    parsedData[1].forEach(element => {
+        if(element.name === 'on') {
+            if(ourBridge.getHTMLObjectById(element.tagIdentifier).getType() == 'IMG') {
+                ourBridge.getHTMLObjectById(element.tagIdentifier).setSrc(element.param);
+            } else {
+                ourBridge.getHTMLObjectById(element.tagIdentifier).setText(element.param);
+            }
+            // ourBridge.getHTMLObjectById(element.tagIdentifier).getText().then( res => console.log(res));
+        }
+    });
 });
 
 
