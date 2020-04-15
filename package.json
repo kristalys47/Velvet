@@ -10,5 +10,13 @@
     "html-pdf": "^2.2.0",
     "jspdf": "^1.5.3",
     "pegjs": "^0.10.0"
+    "inversify": "^5.0.1",
+    "jsdom": "^16.2.2",
+    "pegjs": "^0.10.0",
+    "reflect-metadata": "^0.1.13"
+  },
+  "devDependencies": {
+    "@types/jsdom": "^16.2.1",
+    "@types/node": "^13.11.1"
   }
 }
