@@ -3,6 +3,7 @@ const peg = require("pegjs");
 const fs = require("fs");
 const Bridge = require('./Bridge/build/Bridge').Bridge;
 const htmlRead = require('./htmlElementExtractor');
+const pdf = require('./htmlRenderPDF')
 
 //Read Data and convert it to a JSON object
 // const rawData = fs.readFileSync('input.json');
@@ -33,7 +34,7 @@ fs.readFile('./rules.pegjs', 'utf8', (err, data) => {
         on(fullName, "Nunila Davila");
         on(jobTitle, "Estudiante UPRM ICOM");
         on(headshotImage, "https://picsum.photos/200/300");
-        <out "el/output/path";
+        <out "./example.pdf";
     `);
 
     const templatePath = parsedData[0]['path'].replace(/\"/g, "");
@@ -53,6 +54,10 @@ fs.readFile('./rules.pegjs', 'utf8', (err, data) => {
             // ourBridge.getHTMLObjectById(element.tagIdentifier).getText().then( res => console.log(res));
         }
     });
+
+    const outputPath = parsedData[2]['path'].replace(/\"/g, "");
+    pdf.savePDF(templatePath, outputPath);
+
 });
 
 
