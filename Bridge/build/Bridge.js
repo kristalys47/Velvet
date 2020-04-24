@@ -9,9 +9,12 @@ const H6_1 = require("./HTML-Objects/H/H6");
 const P_1 = require("./HTML-Objects/P");
 const IMG_1 = require("./HTML-Objects/IMG");
 const HTMLObjects_1 = require("./HTML-Objects/ENUM/HTMLObjects");
+let templatePath;
+exports.templatePath = templatePath;
 class Bridge {
-    constructor(inputData) {
+    constructor(inputData, path) {
         this.HTMLObjects = [];
+        exports.templatePath = templatePath = path;
         // Crea los objetos con la info del JSON.
         inputData.forEach((instaceData) => {
             switch (instaceData.type) {
