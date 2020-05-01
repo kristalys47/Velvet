@@ -3,14 +3,13 @@ module.exports = {
         var exec = require('child_process').exec, child;
 
 // generate the report
-
 // execute the wkhtmltopdf command
-        exec(
-            'wkhtmltopdf ' + html_in_path + " " + pdf_out_path,
-            (error) => {
-                // send the PDF file to the client
-            }
-        );
+            exec(
+                'wkhtmltopdf ' + html_in_path + " " + pdf_out_path,
+                (error) => {
+                    console.log("There has been an error, please check that you have the https://wkhtmltopdf.org installed on your computer.") // send the PDF file to the client
+                }
+            );
     }
 }
 
