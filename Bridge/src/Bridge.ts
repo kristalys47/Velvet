@@ -10,12 +10,15 @@ import { P } from "./HTML-Objects/P";
 import { IMG } from "./HTML-Objects/IMG";
 import { HTMLObjects } from "./HTML-Objects/ENUM/HTMLObjects";
 
+let templatePath: string;
 
 export class Bridge {
     
     private HTMLObjects: HTMLObject[] = [];
+   
 
-    constructor(inputData: IInputJSON[]) {
+    constructor(inputData: IInputJSON[], path: string) {
+        templatePath = path;
         // Crea los objetos con la info del JSON.
         inputData.forEach((instaceData: IInputJSON) => {
             switch(instaceData.type) {
@@ -66,3 +69,5 @@ export class Bridge {
      */
     getHTMLObjectById(id: string): HTMLObject { return this.HTMLObjects.filter( (value: HTMLObject) => value.getId() === id)[0]; }
 }
+
+export { templatePath }

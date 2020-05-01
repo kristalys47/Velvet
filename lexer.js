@@ -30,7 +30,7 @@ fs.readFile('./rules.pegjs', 'utf8', (err, data) => {
     //test 1
     const parsedData = parser.parse(
     `
-        >using "./ResumeTemplate.html";
+        >using "./ResumeTestingPath.html";
         on(fullName, "Nunila Davila");
         on(jobTitle, "Estudiante UPRM ICOM");
         on(headshotImage, "https://picsum.photos/200/300");
@@ -41,8 +41,7 @@ fs.readFile('./rules.pegjs', 'utf8', (err, data) => {
     const templateElements = htmlRead.readTemplateAndGenerateElementObject(templatePath);
     console.log(templateElements);
 
-    // JSON.parse(rawData);
-    const ourBridge = new Bridge(templateElements);
+    const ourBridge = new Bridge(templateElements, templatePath);
     
     parsedData[1].forEach(element => {
         if(element.name === 'on') {
