@@ -25,7 +25,7 @@ fs.readFile('./rules.pegjs', 'utf8', (err, data) => {
      * 4. Como cambio el alt de las imagenes, aunque es irrelevante xq se convertira en un PDF pero para debuggin en caso que no encuentre la imagen aparece ahi
      * 5. Como añado los styles.
      */
-    
+
 
     //test 1
     const parsedData = parser.parse(
@@ -42,9 +42,12 @@ fs.readFile('./rules.pegjs', 'utf8', (err, data) => {
     console.log(templateElements);
 
     const ourBridge = new Bridge(templateElements, templatePath);
-    
+
     parsedData[1].forEach(element => {
         if(element.name === 'on') {
+            console.log(element.param);
+            element.param = element.param.replace(/\"/g, "");
+            
             if(ourBridge.getHTMLObjectById(element.tagIdentifier).getType() == 'IMG') {
                 ourBridge.getHTMLObjectById(element.tagIdentifier).setSrc(element.param);
             } else {
@@ -58,5 +61,3 @@ fs.readFile('./rules.pegjs', 'utf8', (err, data) => {
     pdf.savePDF(templatePath, outputPath);
 
 });
-
-
