@@ -8,15 +8,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 const inversify_1 = require("inversify");
 require("reflect-metadata");
+const Bridge_1 = require("../Bridge");
+const jsdom_1 = require("jsdom");
 let DOMService = class DOMService {
     constructor() {
         this.fs = require('fs');
-        this.DOM = require('../../../DOM.js');
+        this.DOM = jsdom_1.JSDOM.fromFile(Bridge_1.templatePath).then((res) => res);
+        this.templatePath = Bridge_1.templatePath;
     }
     modifyInnerHTML(id, newInnerHTML) {
         this.DOM.then((dom) => {
             dom.window.document.getElementById(id).innerHTML = newInnerHTML;
-            this.fs.writeFile('./ResumeTemplate.html', dom.window.document.documentElement.outerHTML, (err) => {
+            this.fs.writeFile(this.templatePath, dom.window.document.documentElement.outerHTML, (err) => {
                 if (err) {
                     console.error(err);
                 }
@@ -35,7 +38,7 @@ let DOMService = class DOMService {
     setSrc(id, newSrc) {
         this.DOM.then((dom) => {
             dom.window.document.getElementById(id).src = newSrc;
-            this.fs.writeFile('./ResumeTemplate.html', dom.window.document.documentElement.outerHTML, (err) => {
+            this.fs.writeFile(this.templatePath, dom.window.document.documentElement.outerHTML, (err) => {
                 if (err) {
                     console.error(err);
                 }
@@ -51,7 +54,7 @@ let DOMService = class DOMService {
     setAlt(id, newAlt) {
         this.DOM.then((dom) => {
             dom.window.document.getElementById(id).alt = newAlt;
-            this.fs.writeFile('./ResumeTemplate.html', dom.window.document.documentElement.outerHTML, (err) => {
+            this.fs.writeFile(this.templatePath, dom.window.document.documentElement.outerHTML, (err) => {
                 if (err) {
                     console.error(err);
                 }
