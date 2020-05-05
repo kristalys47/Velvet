@@ -32,13 +32,17 @@ fs.readFile('./rules.pegjs', 'utf8', (err, data) => {
     `
         >using "./ResumeTestingPath.html";
         on(fullName, "Nunila Davila");
-        on(jobTitle, "Estudiante UPRM ICOM");
+        on(jobTitle, "UPRM STUDENT ICOM");
         on(headshotImage, "https://picsum.photos/200/300");
         <out "./example.pdf";
     `);
 
     const templatePath = parsedData[0]['path'].replace(/\"/g, "");
     const templateElements = htmlRead.readTemplateAndGenerateElementObject(templatePath);
+
+    //temporary fix
+    process.env.template = templatePath;
+    
     console.log(templateElements);
 
     const ourBridge = new Bridge(templateElements, templatePath);

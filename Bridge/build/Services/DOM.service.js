@@ -9,11 +9,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const inversify_1 = require("inversify");
 require("reflect-metadata");
 const Bridge_1 = require("../Bridge");
-const jsdom_1 = require("jsdom");
 let DOMService = class DOMService {
     constructor() {
         this.fs = require('fs');
-        this.DOM = jsdom_1.JSDOM.fromFile(Bridge_1.templatePath).then((res) => res);
+        this.DOM = require('../../../DOM.js');
         this.templatePath = Bridge_1.templatePath;
     }
     modifyInnerHTML(id, newInnerHTML) {
