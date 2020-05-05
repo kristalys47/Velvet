@@ -45,6 +45,7 @@ fs.readFile('./rules.pegjs', 'utf8', (err, data) => {
     
     parsedData[1].forEach(element => {
         if(element.name === 'on') {
+            element.param = element.param.replace(/\"/g, "");
             if(ourBridge.getHTMLObjectById(element.tagIdentifier).getType() == 'IMG') {
                 ourBridge.getHTMLObjectById(element.tagIdentifier).setSrc(element.param);
             } else {
