@@ -21,12 +21,10 @@ fs.readFile('./rules.pegjs', 'utf8', (err, data) => {
      * Suggestions
      * 1. Cambiar param1 y param2 por tagIdentifier y param
      * 2. Como pongo " dentro de " ", Ex; "se usa el " para strings"
-     * 3. Me esta tirando los strings con todo y " "
      * 4. Como cambio el alt de las imagenes, aunque es irrelevante xq se convertira en un PDF pero para debuggin en caso que no encuentre la imagen aparece ahi
-     * 5. Como añado los styles.
      */
-    
 
+    // addStyle( [id], {json _style})
     //test 1
     const parsedData = parser.parse(
     `
@@ -34,6 +32,9 @@ fs.readFile('./rules.pegjs', 'utf8', (err, data) => {
         on(fullName, "Nunila Davila");
         on(jobTitle, "UPRM STUDENT ICOM");
         on(headshotImage, "https://picsum.photos/200/300");
+        
+
+
         <out "./example.pdf";
     `);
 
@@ -43,7 +44,15 @@ fs.readFile('./rules.pegjs', 'utf8', (err, data) => {
     //temporary fix
     process.env.template = templatePath;
     
-    console.log(templateElements);
+    // console.log(templateElements);
+    console.log(parsedData)
+
+    //Temporary until parser works for addStyle
+    parsedData[1].push({type: 'function', name:'addStyle', tagIdentifier: 'fullName', param:"{" +
+            "color: 'red'," +
+            "fontSize: '12px'" +
+            "}"})
+    console.log(parsedData)
 
     const ourBridge = new Bridge(templateElements, templatePath);
     
@@ -56,6 +65,12 @@ fs.readFile('./rules.pegjs', 'utf8', (err, data) => {
                 ourBridge.getHTMLObjectById(element.tagIdentifier).setText(element.param);
             }
             // ourBridge.getHTMLObjectById(element.tagIdentifier).getText().then( res => console.log(res));
+        }
+        else if(element.name = 'addStyle') {
+            // console.log('add style')
+            // console.log(element.tagIdentifier)
+            // console.log(element.param)
+            ourBridge.getHTMLObjectById(element.tagIdentifier).setStyle(element.param)
         }
     });
 

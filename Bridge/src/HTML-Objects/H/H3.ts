@@ -17,4 +17,7 @@ export class H3 extends HTMLObject implements IHTag {
         return this.domService.getInnerHTML(this.getId());   
     }
 
+    public setStyle(styleObj: string): void {
+        this.domService.modifyStyle(this.getId(), styleObj);
+    }
 }

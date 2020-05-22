@@ -60,4 +60,18 @@ export class DOMService {
         });
     }
 
+    public modifyStyle(id: string, newStyle: string): void {
+        console.log("llego a modify style");
+        this.DOM.then((dom: any) => {
+            dom.window.document.getElementById(id).setStyle(newStyle);
+            this.fs.writeFile(this.templatePath, dom.window.document.documentElement.outerHTML, (err: any) => {
+                if(err) {
+                    console.error(err);
+                } else {
+                    console.log(id, "MODIFIED STYLE");
+                }
+            })
+        });
+    }
+
 }

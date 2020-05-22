@@ -63,6 +63,20 @@ let DOMService = class DOMService {
             });
         });
     }
+    modifyStyle(id, newStyle) {
+        console.log("llego a modify style");
+        this.DOM.then((dom) => {
+            dom.window.document.getElementById(id).setStyle(newStyle);
+            this.fs.writeFile(this.templatePath, dom.window.document.documentElement.outerHTML, (err) => {
+                if (err) {
+                    console.error(err);
+                }
+                else {
+                    console.log(id, "MODIFIED STYLE");
+                }
+            });
+        });
+    }
 };
 DOMService = __decorate([
     inversify_1.injectable()

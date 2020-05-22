@@ -16,4 +16,8 @@ export class H1 extends HTMLObject implements IHTag {
     public getText(): Promise<string> {
         return this.domService.getInnerHTML(this.getId());
     }
+
+    public setStyle(styleObj: string): void {
+        this.domService.modifyStyle(this.getId(), styleObj);
+    }
 }
