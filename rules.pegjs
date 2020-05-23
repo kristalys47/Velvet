@@ -9,16 +9,30 @@ functions = w name:identifier w "(" w tagIdentifier:identifier w ","w param:(ide
 ends = w "<out" w path:String w";" w {return {type:'out', path:path}}
 comments = (w "~"  . ([^\n]*) w)/(w "~~" (!"~~" .)* "~~" w) {return text()}
   
-value =  Boolean/Term / String / array
+value =  Boolean/Expression / String / array
 keyword = "number"/"boo"/"string"/"list"
 //integer "integer" = ("-"/"") digits:[0-9]+ { return parseInt(text(), 10); }
 //--------------------------numbers-------------
-Term     = Factor ( Add / Sub )* 
-Add      = w "+" w Factor w
-Sub      = w "-" w Factor w
-Factor   = Primary (Mul / Div)* 
-Mul      = "*" w Primary w
-Div      = "/"  w Primary w
+Expression
+  = head:Term tail:(w ("+" / "-") w Term)* {
+      return tail.reduce(function(result, element) {
+        if (element[1] === "+") { return result + element[3]; }
+        if (element[1] === "-") { return result - element[3]; }
+      }, head);
+    }
+
+Term
+  = head:Factor tail:(w ("*" / "/") w Factor)* {
+      return tail.reduce(function(result, element) {
+        if (element[1] === "*") { return result * element[3]; }
+        if (element[1] === "/") { return result / element[3]; }
+      }, head);
+    }
+
+Factor
+  = "(" w expr:Expression w ")" { return expr; }
+  / Primary
+  
 Primary  = Parens / Neg / Number / Variable
 Parens   = w "(" w term:Term w")"w {return term}
 Neg      = "-" Primary  {return Number(text())}
