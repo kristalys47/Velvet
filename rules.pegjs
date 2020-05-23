@@ -1,11 +1,26 @@
+{
+    	let variables = {};
+        variables["hello"] = 1;
+}
 Program = start (assignation/declaration/append/comments/remove/functions)* ends
 
 start = w ">using" w path:String w ";" w {return {type:'using', path:path}}
-assignation = w target:identifier w "=" w value:value w ";" w {return {type:'assignation', target:target, value:value}}
-declaration = w "@" w target:identifier w ":" w keyword:keyword w "=" w value:value w ";" w{return {type:'declaration',datatype:keyword, target:target,value:value}}
+assignation = w target:identifier w "=" w value:value w ";" w {
+	variables[target] = value;
+	return {type:'assignation', target:target, value:value}
+}
+declaration = w "@" w target:identifier w ":" w keyword:keyword w "=" w value:value w ";" w {
+	if(keyword == "number")
+    	variables[target] = Number(value);
+    else if (keyword == "string")
+    	variables[target] = String(value);
+    else if (keyword == "boo")
+    	variables[target] = Boolean(value);
+    return {type:'declaration',datatype:keyword, target:target,value:variables[target]}
+}
 append = w identifier w "+=" w value w";" w {return}
 remove = w identifier w "-=" w value w ";" w {return}
-functions = w name:identifier w "(" w tagIdentifier:identifier w ","w param:(identifier/value) w ")" w ";" w {return {type:'function',name,tagIdentifier,param}}
+functions = w name:identifier w "(" w tagIdentifier:identifier w ","w param:(Variable/value) w ")" w ";" w {return {type:'function',name,tagIdentifier,param}}
 ends = w "<out" w path:String w";" w {return {type:'out', path:path}}
 comments = (w "~"  . ([^\n]*) w)/(w "~~" (!"~~" .)* "~~" w) {return text()}
   
@@ -40,7 +55,7 @@ Number = float / integer {return Number(text())}
 integer "integer" = digits:[0-9]+ { return parseInt(text(), 10); }
 float "float" = (integer "." integer){ return parseFloat(text(), 10); } /("." integer) { return parseFloat(text(), 10); }
 
-Variable = identifier 
+Variable = identifier {return variables[text()]}
 
 //---------------text----------------------------
 lowerCase  = [a-z]
@@ -50,7 +65,7 @@ underscore = '_'
 identifier = (lowerCase / upperCase / underscore) (lowerCase / upperCase / underscore / digit)* {return text()}
 w "whitespace" = [ \t\n\r]*
 //-------boo-------------------------
-Boolean = "true" / "false" 
+Boolean = "true" / "false"
 //--------------string-------------
 
 String = "\"" content:(!"\"" Char)* "\"" {return text()}
