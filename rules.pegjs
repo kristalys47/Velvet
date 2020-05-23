@@ -16,6 +16,8 @@ declaration = w "@" w target:identifier w ":" w keyword:keyword w "=" w value:va
     	variables[target] = String(value);
     else if (keyword == "boo")
     	variables[target] = Boolean(value);
+    else if (keyword == "list")
+    	variables[target] = Array(value);
     return {type:'declaration',datatype:keyword, target:target,value:variables[target]}
 }
 append = w identifier w "+=" w value w";" w {return}
