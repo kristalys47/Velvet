@@ -5,7 +5,7 @@ The download process is described here and it is available for Mac, Windows or L
 https://wkhtmltopdf.org/downloads.html
 
 To run the program:
-1. Open a terminal in the project root folder (Velvet) 
+1. Open a terminal in the project root folder (Velvet)
 2. Run npm install
 3. Run: node lexer.js
 
