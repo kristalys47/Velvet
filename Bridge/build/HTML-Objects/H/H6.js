@@ -12,5 +12,8 @@ class H6 extends HTMLObject_1.HTMLObject {
     getText() {
         return this.domService.getInnerHTML(this.getId());
     }
+    setStyle(styleObj) {
+        this.domService.modifyStyle(this.getId(), styleObj);
+    }
 }
 exports.H6 = H6;
