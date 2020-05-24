@@ -46,6 +46,9 @@ fs.readFile('./rules.pegjs', 'utf8', (err, data) => {
     console.log(templateElements);
 
     const ourBridge = new Bridge(templateElements, templatePath);
+
+
+
     
     parsedData[1].forEach(element => {
         if(element.name === 'on') {
@@ -59,8 +62,15 @@ fs.readFile('./rules.pegjs', 'utf8', (err, data) => {
         }
     });
 
-    const outputPath = parsedData[2]['path'].replace(/\"/g, "");
-    pdf.savePDF(templatePath, outputPath);
+    setTimeout(function () {
+        const outputPath = parsedData[2]['path'].replace(/\"/g, "");
+
+        pdf.savePDF(templatePath, outputPath);
+    },3000);
+    //
+    // const outputPath = parsedData[2]['path'].replace(/\"/g, "");
+    //
+    // pdf.savePDF(templatePath, outputPath);
 
 });
 
