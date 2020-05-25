@@ -1,1 +1,0 @@
-Todos los H tags tienen las mismas cosas, pero los hice aparte para por si encontramos una diferencia entre ellos en el camino
