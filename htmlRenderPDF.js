@@ -4,10 +4,10 @@ module.exports = {
         var fs = require('fs');
         var pdf = require('html-pdf');
         var html = fs.readFileSync(html_in_path, 'utf8');
-        var options = { height: "15in", width: "10in",  base: "file://"+ __dirname  };
+        var options = {height: "15in", width: "10in", base: "file://" + __dirname};
         console.log(options);
 
-        pdf.create(html, options).toFile(pdf_out_path, function(err, res) {
+        pdf.create(html, options).toFile(pdf_out_path, function (err, res) {
             if (err) return console.log(err);
             console.log(res); // { filename: '/app/businesscard.pdf' }
         })
@@ -27,5 +27,4 @@ module.exports = {
 
 
     }
-
-};
+}

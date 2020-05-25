@@ -32,7 +32,6 @@ fs.readFile('./rules.pegjs', 'utf8', (err, data) => {
         on(fullName, "Paola Rodriguez");
         on(jobTitle, "UPRM ALUMNI");
         on(headshotImage, "https://picsum.photos/200/300");
-        
 
         <out "./example.pdf";
     `);
@@ -54,7 +53,7 @@ fs.readFile('./rules.pegjs', 'utf8', (err, data) => {
     console.log(parsedData)
 
     const ourBridge = new Bridge(templateElements, templatePath);
-    
+
     parsedData[1].forEach(element => {
         if(element.name === 'on') {
             element.param = element.param.replace(/\"/g, "");
@@ -82,5 +81,3 @@ fs.readFile('./rules.pegjs', 'utf8', (err, data) => {
     // pdf.savePDF(templatePath, outputPath);
 
 });
-
-
