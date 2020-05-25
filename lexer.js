@@ -33,7 +33,7 @@ fs.readFile('./rules.pegjs', 'utf8', (err, data) => {
         on(jobTitle, "UPRM ALUMNI");
         on(headshotImage, "https://picsum.photos/200/300");
         
-        addStyle(fullName, { "color": "blue", "font-size": "40px"});
+        addStyle(fullName, { "color": "red", "font-size": "40px"});
         
         <out "./example.pdf";
     `);
