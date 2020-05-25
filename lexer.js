@@ -29,11 +29,10 @@ fs.readFile('./rules.pegjs', 'utf8', (err, data) => {
     const parsedData = parser.parse(
     `
         >using "./ResumeTestingPath.html";
-        on(fullName, "Nunila Davila");
-        on(jobTitle, "UPRM STUDENT ICOM");
+        on(fullName, "Paola Rodriguez");
+        on(jobTitle, "UPRM ALUMNI");
         on(headshotImage, "https://picsum.photos/200/300");
         
-
 
         <out "./example.pdf";
     `);
@@ -45,12 +44,12 @@ fs.readFile('./rules.pegjs', 'utf8', (err, data) => {
     process.env.template = templatePath;
     
     // console.log(templateElements);
-    console.log(parsedData)
+    // console.log(parsedData)
 
     //Temporary until parser works for addStyle
     parsedData[1].push({type: 'function', name:'addStyle', tagIdentifier: 'fullName', param:"{" +
-            "color: red;" +
-            "font-size: 50px;" +
+            "color: blue;" +
+            "font-size: 30px;" +
             "}"})
     console.log(parsedData)
 
@@ -67,16 +66,20 @@ fs.readFile('./rules.pegjs', 'utf8', (err, data) => {
             // ourBridge.getHTMLObjectById(element.tagIdentifier).getText().then( res => console.log(res));
         }
         else if(element.name = 'addStyle') {
-            // console.log('add style')
-            // console.log(element.tagIdentifier)
-            // console.log(element.param)
             element.param = element.param.replace("{", "").replace("}", "");
             ourBridge.getHTMLObjectById(element.tagIdentifier).setStyle(element.param)
         }
     });
 
-    const outputPath = parsedData[2]['path'].replace(/\"/g, "");
-    pdf.savePDF(templatePath, outputPath);
+    setTimeout(function () {
+        const outputPath = parsedData[2]['path'].replace(/\"/g, "");
+
+        pdf.savePDF(templatePath, outputPath);
+    },3000);
+    //
+    // const outputPath = parsedData[2]['path'].replace(/\"/g, "");
+    //
+    // pdf.savePDF(templatePath, outputPath);
 
 });
 
