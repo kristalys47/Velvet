@@ -25,6 +25,10 @@ export class IMG extends HTMLObject {
         return this.domService.getAlt(this.getId());
     }
 
+    public setStyle(styleObj: string): void {
+        this.domService.modifyStyle(this.getId(), styleObj);
+    }
+
     // public setHeight(height: number): void { this.height = height; }
     // public getHeight(): number { return this.height; }
 

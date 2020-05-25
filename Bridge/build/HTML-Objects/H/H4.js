@@ -12,5 +12,8 @@ class H4 extends HTMLObject_1.HTMLObject {
     getText() {
         return this.domService.getInnerHTML(this.getId());
     }
+    setStyle(styleObj) {
+        this.domService.modifyStyle(this.getId(), styleObj);
+    }
 }
 exports.H4 = H4;
