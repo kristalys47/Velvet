@@ -13,7 +13,7 @@ fs.readFile('./rules.pegjs', 'utf8', (err, data) => {
             on(headshotImage, "https://picsum.photos/200/300");
             <out "./example.pdf";
         `);
-}
+});
 
 
     // >using "./ResumeTestingPath.html";
