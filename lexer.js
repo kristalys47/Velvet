@@ -32,7 +32,9 @@ fs.readFile('./rules.pegjs', 'utf8', (err, data) => {
         on(fullName, "Paola Rodriguez");
         on(jobTitle, "UPRM ALUMNI");
         on(headshotImage, "https://picsum.photos/200/300");
-
+        
+        addStyle(fullName, { "color": "blue", "font-size": "40px"});
+        
         <out "./example.pdf";
     `);
 
@@ -45,11 +47,6 @@ fs.readFile('./rules.pegjs', 'utf8', (err, data) => {
     // console.log(templateElements);
     // console.log(parsedData)
 
-    //Temporary until parser works for addStyle
-    parsedData[1].push({type: 'function', name:'addStyle', tagIdentifier: 'fullName', param:"{" +
-            "color: blue;" +
-            "font-size: 30px;" +
-            "}"})
     console.log(parsedData)
 
     const ourBridge = new Bridge(templateElements, templatePath);
@@ -65,8 +62,10 @@ fs.readFile('./rules.pegjs', 'utf8', (err, data) => {
             // ourBridge.getHTMLObjectById(element.tagIdentifier).getText().then( res => console.log(res));
         }
         else if(element.name = 'addStyle') {
-            element.param = element.param.replace("{", "").replace("}", "");
-            ourBridge.getHTMLObjectById(element.tagIdentifier).setStyle(element.param)
+            let filteredStyle = JSON.stringify(element.param).replace(/\"/g, "")
+                                .replace("{", "").replace("}", "")
+                                .replace(",", ";");
+            ourBridge.getHTMLObjectById(element.tagIdentifier).setStyle(filteredStyle);
         }
     });
 
