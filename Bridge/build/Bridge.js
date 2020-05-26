@@ -14,7 +14,12 @@ class Bridge {
         // Crea los objetos con la info del JSON.
         inputData.forEach((instaceData) => {
             switch (instaceData.type) {
-                case HTMLObjects_1.HTMLObjects.HTag: {
+                case "H1":
+                case "H2":
+                case "H3":
+                case "H4":
+                case "H5":
+                case "H6": {
                     this.HTMLObjects.push(new HTag_1.HTag(instaceData.id));
                     break;
                 }

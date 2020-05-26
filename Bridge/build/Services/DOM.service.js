@@ -67,7 +67,7 @@ let DOMService = /** @class */ (() => {
         }
         modifyStyle(id, newStyle) {
             this.DOM.then((dom) => {
-                dom.window.document.getElementById(id).setStyle(newStyle);
+                dom.window.document.getElementById(id).setAttribute("style", newStyle);
                 this.fs.writeFile(this.templatePath, dom.window.document.documentElement.outerHTML, (err) => {
                     if (err) {
                         console.error(err);

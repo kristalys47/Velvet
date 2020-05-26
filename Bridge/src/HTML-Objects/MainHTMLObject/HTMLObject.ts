@@ -23,5 +23,5 @@ export class HTMLObject {
     
 
     public getStyle(): string { return this.style; }
-    // public setStyle(newStyle: string): void { this.style = newStyle; }
+    public setStyle(newStyle: string): void { this.style = newStyle; }
 }

@@ -2,7 +2,6 @@ const jsdom = require("jsdom");
 const {JSDOM} = jsdom;
 const fs = require("fs")
 
-
 const editableElements = ["H1", "H2", "H3", "H4", "H5", "H6", "P", "IMG", "UL", "OL"];
 let templateElements = [];
 
@@ -36,7 +35,6 @@ module.exports = {
     }
 }
 
-
 //Checks whether div contains editable children elements.
 function hasEditableElements(childrenElements) {
 
@@ -45,9 +43,9 @@ function hasEditableElements(childrenElements) {
 
         if (editableElements.includes(currentChild.nodeName)) {
             templateElements.push({
-                                      type: currentChild.nodeName,
-                                      id: currentChild.getAttribute("id")
-                                  });
+                type: currentChild.nodeName,
+                id: currentChild.getAttribute("id")
+            });
 
         }
     }

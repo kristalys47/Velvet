@@ -26,6 +26,7 @@ let HTMLObject = /** @class */ (() => {
         getId() { return this.id; }
         getType() { return this.type; }
         getStyle() { return this.style; }
+        setStyle(newStyle) { this.style = newStyle; }
     }
     __decorate([
         inversify_1.inject(types_1.TYPES.IHTag),
