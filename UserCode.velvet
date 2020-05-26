@@ -1,7 +1,9 @@
 
 >using "HTMLS/resume1.html";
 
-on(section2, "Profesion:Bullshitter");
+on(section2, "Profession:Bullshitter");
+on(section2a1, "Intern at Pixar");
+on(section2a2, "Edited films to make the world a better place");
 
 addStyle(title, { "color": "blue", "font-size": "40px"});
 

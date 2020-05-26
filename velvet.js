@@ -25,7 +25,7 @@ fs.readFile('./rules.pegjs', 'utf8', (err, data) => {
 
         process.env.template = templatePath;
 
-        // console.log(templateElements);
+        console.log(templateElements);
 
         const ourBridge = new Bridge(templateElements, templatePath);
 
