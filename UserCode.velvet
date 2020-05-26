@@ -1,8 +1,8 @@
 
 >using "./ResumeTestingPath.html";
 
-on(fullName, "Ursula Rodriguez");
-on(jobTitle, "UPRM Computer Engineering Student");
+on(fullName, "Maria Fernandez");
+on(jobTitle, "UPRM Software Engineering Student");
 on(headshotImage, "https://picsum.photos/200/300");
 
 addStyle(fullName, { "color": "purple", "font-size": "40px"});
