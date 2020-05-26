@@ -12,7 +12,6 @@ let templateElements = [];
  */
 module.exports = {
     readTemplateAndGenerateElementObject: function (templatePath) {
-
         //Create DOM object to access methods from template file.
         const dom = new JSDOM(fs.readFileSync(templatePath, 'utf8'));
 

@@ -1,10 +1,9 @@
 
->using "./ResumeTestingPath.html";
+>using "HTMLS/resume1.html";
 
-on(fullName, "Maria Fernandez");
-on(jobTitle, "UPRM Software Engineering Student");
-on(headshotImage, "https://picsum.photos/200/300");
 
-addStyle(fullName, { "color": "purple", "font-size": "40px"});
+on(section2, "Profesion:Bullshitter");
+
+addStyle(title, { "color": "blue", "font-size": "40px"});
 
 <out "./example.pdf";
