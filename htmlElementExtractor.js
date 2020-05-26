@@ -2,7 +2,6 @@ const jsdom = require("jsdom");
 const {JSDOM} = jsdom;
 const fs = require("fs")
 
-
 const editableElements = ["H1", "H2", "H3", "H4", "H5", "H6", "P", "IMG", "UL", "OL"];
 let templateElements = [];
 
@@ -13,7 +12,6 @@ let templateElements = [];
  */
 module.exports = {
     readTemplateAndGenerateElementObject: function (templatePath) {
-
         //Create DOM object to access methods from template file.
         const dom = new JSDOM(fs.readFileSync(templatePath, 'utf8'));
 
@@ -29,13 +27,12 @@ module.exports = {
             //Only add DIVS that have an ID to the list
             if (currentItem.getAttribute("id")) {
                 templateElements.push({type: "DIV", id: currentItem.getAttribute("id")})
-                hasEditableElements(children, currentItem.getAttribute("id"));
             }
+            hasEditableElements(children, currentItem.getAttribute("id"));
         }
         return templateElements;
     }
 }
-
 
 //Checks whether div contains editable children elements.
 function hasEditableElements(childrenElements) {
@@ -45,9 +42,9 @@ function hasEditableElements(childrenElements) {
 
         if (editableElements.includes(currentChild.nodeName)) {
             templateElements.push({
-                                      type: currentChild.nodeName,
-                                      id: currentChild.getAttribute("id")
-                                  });
+                type: currentChild.nodeName,
+                id: currentChild.getAttribute("id")
+            });
 
         }
     }

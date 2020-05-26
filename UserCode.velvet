@@ -1,0 +1,8 @@
+
+>using "HTMLS/resume1.html";
+
+on(section2, "Profesion:Bullshitter");
+
+addStyle(title, { "color": "blue", "font-size": "40px"});
+
+<out "./example.pdf";

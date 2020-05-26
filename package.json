@@ -12,7 +12,8 @@
     "jsdom": "^16.2.2",
     "jspdf": "^1.5.3",
     "pegjs": "^0.10.0",
-    "reflect-metadata": "^0.1.13"
+    "reflect-metadata": "^0.1.13",
+    "typescript": "^3.9.3"
   },
   "devDependencies": {
     "@types/jsdom": "^16.2.1",

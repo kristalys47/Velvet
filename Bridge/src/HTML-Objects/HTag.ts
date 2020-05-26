@@ -1,10 +1,12 @@
 import { HTMLObject } from "./MainHTMLObject/HTMLObject";
+import { IHTag } from "../Interfaces/HTag.interface";
 import { HTMLObjects } from "./ENUM/HTMLObjects";
 
-export class P extends HTMLObject {
 
-    constructor(id: string){
-        super(id, HTMLObjects.P);
+export class HTag extends HTMLObject implements IHTag {
+
+    constructor(id: string) {
+        super(id, HTMLObjects.HTag);
     }
 
     public setText(text: string): void { 

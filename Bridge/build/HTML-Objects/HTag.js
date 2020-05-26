@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.P = void 0;
+exports.HTag = void 0;
 const HTMLObject_1 = require("./MainHTMLObject/HTMLObject");
 const HTMLObjects_1 = require("./ENUM/HTMLObjects");
-class P extends HTMLObject_1.HTMLObject {
+class HTag extends HTMLObject_1.HTMLObject {
     constructor(id) {
-        super(id, HTMLObjects_1.HTMLObjects.P);
+        super(id, HTMLObjects_1.HTMLObjects.HTag);
     }
     setText(text) {
         this.domService.modifyInnerHTML(this.getId(), text);
@@ -17,4 +17,4 @@ class P extends HTMLObject_1.HTMLObject {
         this.domService.modifyStyle(this.getId(), styleObj);
     }
 }
-exports.P = P;
+exports.HTag = HTag;
