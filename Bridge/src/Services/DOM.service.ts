@@ -6,7 +6,7 @@ import { JSDOM } from "jsdom";
 @injectable()
 export class DOMService {
     private fs = require('fs');
-    private DOM = JSDOM.fromFile(templatePath).then((res: any) => res);
+    private DOM = require('../../../DOM.js');
     private templatePath: string = templatePath;
 
     public modifyInnerHTML(id: string, newInnerHTML: string): void {
