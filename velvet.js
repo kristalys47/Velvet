@@ -5,11 +5,17 @@ const Bridge = require('./Bridge/build/Bridge').Bridge;
 const htmlRead = require('./htmlElementExtractor');
 const pdf = require('./htmlRenderPDF')
 
+//Read Data and convert it to a JSON object
+// const rawData = fs.readFileSync('input.json');
+// const data = JSON.parse(rawData);
+// const ourBridge = new Bridge(data);
+
 fs.readFile('./rules.pegjs', 'utf8', (err, data) => {
     if (err) throw err;
 
     const parser = peg.generate(data);
 
+    //Read User Code
     fs.readFile('UserCode.velvet', (err, data) => {
         if (err) console.log(err);
 
