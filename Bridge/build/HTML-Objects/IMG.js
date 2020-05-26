@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.IMG = void 0;
 const HTMLObject_1 = require("./MainHTMLObject/HTMLObject");
 const HTMLObjects_1 = require("./ENUM/HTMLObjects");
 class IMG extends HTMLObject_1.HTMLObject {
@@ -20,6 +21,9 @@ class IMG extends HTMLObject_1.HTMLObject {
     }
     getAlt() {
         return this.domService.getAlt(this.getId());
+    }
+    setStyle(styleObj) {
+        this.domService.modifyStyle(this.getId(), styleObj);
     }
 }
 exports.IMG = IMG;

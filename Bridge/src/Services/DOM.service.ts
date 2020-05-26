@@ -62,7 +62,7 @@ export class DOMService {
 
     public modifyStyle(id: string, newStyle: string): void {
         this.DOM.then((dom: any) => {
-            dom.window.document.getElementById(id).setStyle(newStyle);
+            dom.window.document.getElementById(id).setAttribute("style", newStyle)
             this.fs.writeFile(this.templatePath, dom.window.document.documentElement.outerHTML, (err: any) => {
                 if(err) {
                     console.error(err);
