@@ -4,8 +4,6 @@ const fs = require("fs");
 const Bridge = require('./Bridge/build/Bridge').Bridge;
 const htmlRead = require('./htmlElementExtractor');
 const pdf = require('./htmlRenderPDF')
-const secondfs = require('fs')
-
 
 //Read Data and convert it to a JSON object
 // const rawData = fs.readFileSync('input.json');
@@ -26,7 +24,7 @@ fs.readFile('./rules.pegjs', 'utf8', (err, data) => {
      */
 
     //Read User Code
-    secondfs.readFile('UserCode.velvet', (err, data) => {
+    fs.readFile('UserCode.velvet', (err, data) => {
         if (err) console.log(err);
 
         const parsedData = parser.parse(data.toString());
