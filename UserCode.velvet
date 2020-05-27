@@ -1,8 +1,11 @@
 
 >using "HTMLS/resume1.html";
 
-on(section2, "Profesion:Bullshitter");
+on(section2, "Experience");
+on(section2a1, "Intern at Pixar");
+on(section2a2, "Helped drawing to make the world a better place.");
+on(title, "Ursula Domingo");
 
-addStyle(title, { "color": "blue", "font-size": "40px"});
+addStyle(title, { "color": "purple", "font-size": "40px"});
 
 <out "./example.pdf";

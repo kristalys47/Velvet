@@ -45,7 +45,7 @@ function hasEditableElements(childrenElements) {
                 type: currentChild.nodeName,
                 id: currentChild.getAttribute("id")
             });
-
         }
+        if (currentChild.nodeName == 'ARTICLE') hasEditableElements(currentChild.children)
     }
 }
