@@ -10,9 +10,6 @@ Velvet es un lenguaje que busca simplificar el editaje de un documento y la crea
 El código escrito en Velvet se encuentra en el archivo UserCode.velvet localizado en el directorio root.
 Aquí es donde el usuario debe escribir el código que quiera ejecutar.
 
-## Link al video demo 
-[testing link](rules.pegjs)
-
 ## Link al video comercial
 [Velvet](https://youtu.be/hhVrhUSYqqQ)
 
