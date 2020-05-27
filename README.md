@@ -19,6 +19,9 @@ Aquí es donde el usuario debe escribir el código que quiera ejecutar.
 
 # Creado por:
 Jaime S. Ginorio Ramirez
+
 Kristalys Ruiz Rohena
+
 Nunila M. Dávila Rivera
+
 Luis Romero-Sevilla
