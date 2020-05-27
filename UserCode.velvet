@@ -1,10 +1,43 @@
 
 >using "HTMLS/resume1.html";
 
-on(section2, "Profession:Bullshitter");
-on(section2a1, "Intern at Pixar");
-on(section2a2, "Edited films to make the world a better place");
+on(title, "Ursula Domingo");
+on(subtitle, "UPRM Software Engineering Student");
+on(email, "exampleemail@yahoo.com");
+on(website, "github.com");
+on(phone, "939-556-8752");
 
-addStyle(title, { "color": "blue", "font-size": "40px"});
+on(section1, "Education");
+on(description1, "Bachelors in Software Engineering at the University of Puerto Rico, Mayaguez Campus");
+
+on(section2, "Experience");
+on(section2a1, "Intern at Pixar");
+on(section2a2, "Helped drawing to make the world a better place.");
+on(section2a3, "Assisted in movie UP");
+
+on(section2b1, "Intern at Facebook");
+on(section2b2, "Learned React to work in Messenger app.");
+on(section2b3, "Assisted in notification settings.");
+
+on(section3, "Technical Skills");
+on(section3a, "Java");
+on(section3b, "Pyhton");
+on(section3c, "Go");
+on(section3d, "C++");
+on(section3e, "C#");
+on(section3f, "Scala");
+on(section3g, "Javascript");
+on(section3h, "React");
+on(section3i, "SQL");
+
+on(section4, "General");
+on(section4a, "Language");
+on(section4b, "Fluent in English and Spanish");
+on(section4c, "Microsoft Office");
+on(section4d, "Expert in Excel, Word and PowerPoint");
+on(section4e, "Organizations");
+on(section4f, "President of IEEE Computer Society");
+
+addStyle(title, { "color": "purple", "font-size": "40px"});
 
 <out "./example.pdf";

@@ -5,11 +5,6 @@ const Bridge = require('./Bridge/build/Bridge').Bridge;
 const htmlRead = require('./htmlElementExtractor');
 const pdf = require('./htmlRenderPDF')
 
-//Read Data and convert it to a JSON object
-// const rawData = fs.readFileSync('input.json');
-// const data = JSON.parse(rawData);
-// const ourBridge = new Bridge(data);
-
 fs.readFile('./rules.pegjs', 'utf8', (err, data) => {
     if (err) throw err;
 
@@ -30,6 +25,7 @@ fs.readFile('./rules.pegjs', 'utf8', (err, data) => {
         const ourBridge = new Bridge(templateElements, templatePath);
 
         parsedData[1].forEach(element => {
+            console.log(element)
             if(element.name === 'on') {
                 element.param = element.param.replace(/\"/g, "");
                 if(ourBridge.getHTMLObjectById(element.tagIdentifier).getType() == 'IMG') {

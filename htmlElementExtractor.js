@@ -2,7 +2,7 @@ const jsdom = require("jsdom");
 const {JSDOM} = jsdom;
 const fs = require("fs")
 
-const editableElements = ["H1", "H2", "H3", "H4", "H5", "H6", "P", "IMG", "UL", "OL"];
+const editableElements = ["H1", "H2", "H3", "H4", "H5", "H6", "P", "IMG", "UL", "OL", "LI"];
 let templateElements = [];
 
 /*
@@ -46,7 +46,7 @@ function hasEditableElements(childrenElements) {
                 id: currentChild.getAttribute("id")
             });
         }
-        if (currentChild.nodeName == 'ARTICLE') {
+        if (currentChild.nodeName == 'ARTICLE' || currentChild.nodeName == 'UL' || currentChild.nodeName == 'OL' ) {
             hasEditableElements(currentChild.children)
         }
     }
