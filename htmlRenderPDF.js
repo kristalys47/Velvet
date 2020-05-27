@@ -4,7 +4,7 @@ module.exports = {
         var fs = require('fs');
         var pdf = require('html-pdf');
         var html = fs.readFileSync(html_in_path, 'utf8');
-        var options = {height: "15in", width: "10in", base: "file:\\" + __dirname};
+        var options = {height: "15in", width: "10in", base: "./"};
         console.log(options);
 
         pdf.create(html, options).toFile(pdf_out_path, function (err, res) {
