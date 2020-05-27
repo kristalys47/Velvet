@@ -19,7 +19,8 @@ class Bridge {
                 case "H3":
                 case "H4":
                 case "H5":
-                case "H6": {
+                case "H6":
+                case "LI": {
                     this.HTMLObjects.push(new HTag_1.HTag(instaceData.id));
                     break;
                 }

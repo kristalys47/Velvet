@@ -25,6 +25,7 @@ fs.readFile('./rules.pegjs', 'utf8', (err, data) => {
         const ourBridge = new Bridge(templateElements, templatePath);
 
         parsedData[1].forEach(element => {
+            console.log(element)
             if(element.name === 'on') {
                 element.param = element.param.replace(/\"/g, "");
                 if(ourBridge.getHTMLObjectById(element.tagIdentifier).getType() == 'IMG') {
