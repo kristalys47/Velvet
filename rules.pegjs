@@ -24,7 +24,10 @@ append = w identifier w "+=" w value w";" w {return}
 remove = w identifier w "-=" w value w ";" w {return}
 functions = w name:identifier w "(" w tagIdentifier:identifier w ","w param:(Variable/value) w ")" w ";" w {return {type:'function',name,tagIdentifier,param}}
 ends = w "<out" w path:String w";" w {return {type:'out', path:path}}
-comments = (w "~"  . ([^\n]*) w)/(w "~~" (!"~~" .)* "~~" w) {return text()}
+
+_ = [ \t\r\n]* {return null}
+single = '~~' p:([^\n]*) {return p.join('')}
+comments = _ p:(single) {return 'COMMENT'}
   
 value =  Boolean/Expression / String / array /JSON_text
 keyword = "number"/"boo"/"string"/"list"
