@@ -15,3 +15,6 @@ Aquí es donde el usuario debe escribir el código que quiera ejecutar.
 
 ## Link al video comercial
 [Velvet](https://youtu.be/hhVrhUSYqqQ)
+
+## Link a la Presentacion y Demostracion
+[Velvet Demo & Presentacion](https://drive.google.com/file/d/1fBfkrcW6Fu8knQXenn8_5_IENbJcOIXK/view?usp=sharing)
