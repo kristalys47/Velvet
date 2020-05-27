@@ -3,7 +3,7 @@
 
 ~~ignore this comment please
 
-on(title, "Ursula Domingo");
+on(title, "Ursula Marquez");
 on(subtitle, "UPRM Software Engineering Student");
 on(email, "exampleemail@yahoo.com");
 on(website, "github.com");
