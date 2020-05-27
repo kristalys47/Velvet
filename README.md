@@ -15,3 +15,10 @@ Aquí es donde el usuario debe escribir el código que quiera ejecutar.
 
 ## Link a la Presentacion y Demostracion
 [Velvet Demo & Presentacion](https://drive.google.com/file/d/1fBfkrcW6Fu8knQXenn8_5_IENbJcOIXK/view?usp=sharing)
+
+
+# Creado por:
+Jaime S. Ginorio Ramirez
+Kristalys Ruiz Rohena
+Nunila M. Dávila Rivera
+Luis Romero-Sevilla
