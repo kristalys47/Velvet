@@ -10,7 +10,7 @@
     "html-pdf": "^2.2.0",
     "inversify": "^5.0.1",
     "jsdom": "^16.2.2",
-    "jspdf": "^1.5.3",
+    "jspdf": "^2.5.1",
     "pegjs": "^0.10.0",
     "reflect-metadata": "^0.1.13",
     "typescript": "^3.9.3"
